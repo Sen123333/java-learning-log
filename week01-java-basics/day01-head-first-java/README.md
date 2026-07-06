@@ -1,6 +1,9 @@
 java-learning-log
+
 Day 1 - Java 基础
+
 今天学了什么
+
 今天我学习了 Java 程序的基本结构。Java 代码必须写在 class 里面。main 方法是程序开始运行的地方。我还学习了 Java 程序从 .java 文件到运行的过程：先写源代码，然后用 javac 编译成 .class 文件，最后由 JVM 运行。
 
 今天我练习了 System.out.println()、变量、while 循环、if / else 判断，也学习了 Python 和 Java 的一些区别。
