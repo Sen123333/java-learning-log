@@ -25,11 +25,3 @@ PythonVsJavaNotes.java
 今日总结
 
 今天我学习了 Java 的基础结构和运行流程。Java 程序先写在 .java 文件里，然后用 javac 编译成 .class 文件，最后由 JVM 运行。我也练习了输出语句、变量、while 循环和 if / else 判断。今天最不习惯的是 Java 需要写分号、大括号和变量类型。明天我需要继续练习 Java 的基础语法，特别是 class、main method 和 if / else。
-
-Bug Log - Day 1 Java 基础
-
-缺少分号 error: ';' expected 我忘记在 Java 语句结尾加分号。 我看编译器提示的行数，然后在那一行最后加上 ;。
-class 名字和文件名不一致 class MyFirstApp is public, should be declared in a file named MyFirstApp.java Java 里 public class 的名字必须和文件名一样。 我把文件名和 public class 名字改成完全一样。
-少写一个大括号 error: reached end of file while parsing 我写了 {，但是没有写对应的 }。 我检查每一个 { 和 }，然后在最后补上缺少的大括号。
-大小写写错 cannot find symbol Java 区分大小写，比如 System 不能写成 system。 我把单词的大小写改成正确格式。
-没有先编译就运行 Could not find or load main class 我没有成功生成 .class 文件，或者运行时 class 名字写错了。 我先用 javac FileName.java 编译，再用 java ClassName 运行。
