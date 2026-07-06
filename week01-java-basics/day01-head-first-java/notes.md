@@ -28,3 +28,14 @@ Class 可以理解成一个装 Java 代码的容器。
 main() 方法是 Java 程序的开始位置。
 当程序运行时，Java 会先找到 main() 方法，然后从这里开始执行代码。
 如果没有 main() 方法，程序就不知道从哪里开始运行。
+
+Java 运行流程图
+.java source code
+to
+javac compiler
+to
+.class bytecode
+to
+JVM
+to
+program runs
