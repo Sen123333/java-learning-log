@@ -39,3 +39,99 @@ to
 JVM
 to
 program runs
+
+Sharpen your pencil 代码解释
+int size = 27;
+
+创建一个整数变量 size，值是 27。
+
+String name = “Fido”;
+
+创建一个字符串变量 name，内容是 "Fido"。
+注意：Java 里要用英文双引号 " "，不要用中文/弯引号 “ ”。
+
+Dog myDog = new Dog(name, size);
+
+创建一个新的 Dog 对象。
+把 name 和 size 传给 Dog 的构造方法。
+myDog 是这个 Dog 对象的名字/引用。
+
+x = size - 5;
+
+让 x 等于 size - 5。
+因为 size 是 27，所以 x = 22。
+不过这里前面应该先声明 x：
+
+int x = size - 5;
+if (x < 15) myDog.bark(8);
+
+如果 x < 15，就让 myDog 叫 8 次。
+但是这里 x 是 22，所以条件是 false，不会执行 bark(8)。
+
+while (x > 3) {
+
+只要 x > 3，就一直重复执行大括号 { } 里面的代码。
+
+    myDog.play();
+
+让 myDog 执行 play() 方法，也就是让狗玩。
+
+}
+
+结束 while 循环。
+注意：这个循环里面没有改变 x，所以如果 x 一直是 22，就会变成无限循环。通常要写：
+
+x = x - 1;
+int[] numList = {2,4,6,8};
+
+创建一个整数数组 numList。
+里面有 4 个数字：2, 4, 6, 8。
+
+System.out.print(“Hello”);
+
+在屏幕上输出 Hello。
+注意也要用英文双引号：
+
+System.out.print("Hello");
+System.out.print(“Dog: ” + name);
+
+输出 Dog: Fido。
++ name 的意思是把变量 name 的内容接到文字后面。
+
+String num = “8”;
+
+创建一个字符串变量 num，内容是 "8"。
+这里的 "8" 是文字，不是整数。
+
+int z = Integer.parseInt(num);
+
+把字符串 "8" 转成整数 8，然后存进变量 z。
+所以 z 是 int 类型，值是 8。
+
+try {
+
+开始一个 try 区块。
+意思是：这里面的代码可能会出错，所以先尝试运行。
+
+    readTheFile(“myFile.txt”);
+
+尝试读取 myFile.txt 这个文件。
+注意双引号也要改成英文：
+
+readTheFile("myFile.txt");
+}
+
+结束 try 区块。
+
+catch(FileNotFoundException ex) {
+
+如果文件找不到，就会进入这个 catch 区块。
+FileNotFoundException 的意思是“文件找不到错误”。
+
+    System.out.print(“File not found.”);
+
+输出：
+
+File not found.
+
+意思是告诉用户：文件没有找到。
