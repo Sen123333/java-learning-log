@@ -2,7 +2,9 @@
 
 ## 阅读内容
 
-Head First Java Chapter 2: A Trip to Objectville
+重新阅读Head First Java Chapter 2: A Trip to Objectville
+
+时间：1时
 
 这一章主要讲 Java 里的 class 和 object。
 它让我理解 Java 不是只写一行一行的代码，而是要用对象来组织程序。
