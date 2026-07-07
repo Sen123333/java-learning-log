@@ -1,5 +1,10 @@
 ## 《Head First Java》第2章 5个核心概念总结
 
+阅读内容
+
+Head First Java Chapter 2: A Trip to Objectville
+时间2小时
+
 1. **对象（Objects）**：Java程序的核心是对象，对象有状态（实例变量）和行为（方法）。
 
 2. **类（Class）**：类是对象的蓝图，定义了对象的结构和行为。每个对象都是某个类的实例。
