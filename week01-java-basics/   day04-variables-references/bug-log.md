@@ -26,7 +26,7 @@ b.name = "Luna";
 最后 a.name 和 b.name 都输出 Luna。
 
 Bug 2: 创建 array 以后忘记创建 object
-问题
+###问题
 
 我创建了 Dog array，但是忘记创建 Dog object。
 
@@ -45,7 +45,7 @@ dogs 数组已经存在，但是 dogs[0] 里面还没有 Dog object。
 dogs[0] = new Dog();
 dogs[0].name = "Max";
 Bug 3: 计算平均分时使用 int division
-问题
+###问题
 
 一开始我用 int 计算平均分，可能会丢掉小数部分。
 
@@ -59,7 +59,7 @@ Bug 3: 计算平均分时使用 int division
 
 double average = total / (double) scores.length;
 Bug 4: isLongBook() 应该返回 boolean
-问题
+###问题
 
 一开始我可能会把 isLongBook() 写成只打印结果的方法。
 
