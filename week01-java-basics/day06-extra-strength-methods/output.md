@@ -17,6 +17,7 @@ PASS: out of range 9 test
 PASS: non-number test
 
 RandomRangeDemo.java
+
 Random start: 2 PASS
 Random start: 0 PASS
 Random start: 4 PASS
@@ -38,6 +39,7 @@ Random start: 0 PASS
 Random start: 4 PASS
 Random start: 3 PASS
 Final result: PASS
+
 PassByValueReassignmentDemo.java
 
 Before changeDogName:
