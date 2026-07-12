@@ -1,105 +1,103 @@
-## design-notes.md
+# Day 6 Bug Log
 
-```md
-# Day 6 Design Notes
+## Bug 1: 重复猜测被算成新的 hit
 
-## 目标
+### 问题
 
-创建一个简单的 Dot Com 游戏。
+第一版里，如果用户重复猜同一个正确位置，hit count 会继续增加。
 
-电脑在 0 到 6 的一维格子里放置一个 Dot Com。
+例子：
 
-Dot Com 占 3 个连续位置。
+```text
+location = {2, 3, 4}
+guess 2 -> hit
+guess 2 -> hit again
 
-用户不断输入数字来猜位置。
+这是错误的。
 
-程序返回：
+第二次猜 2 不应该算新的 hit。
 
-- `miss`
-- `hit`
-- `kill`
-- `repeat`
-- `invalid`
+原因
 
----
+我只检查 guess 是否等于某个 location。
 
-## SimpleDotCom 的 State
+但是我没有检查这个 location 是否已经被猜中过。
 
-`SimpleDotCom` class 需要保存：
+修正方法
 
-- `locationCells`：Dot Com 的 3 个位置
-- `hitCells`：每个位置是否已经被命中
-- `numOfHits`：已经命中的数量
+我增加了一个 boolean array：
 
----
+private boolean[] hitCells;
 
-## SimpleDotCom 的 Behavior
+如果某个位置已经被 hit，就标记为 true。
 
-### setLocationCells()
+如果用户再猜同一个位置，返回 repeat。
 
-这个方法用来保存 Dot Com 的位置。
+下次如何避免
 
-例如：
+如果程序要记录进度，不能只记录位置，还要记录这个位置是否已经被使用过。
 
-```java
-dot.setLocationCells(new int[] {2, 3, 4});
-checkYourself()
+Bug 2: 随机起点可能越界
+问题
 
-这个方法接收用户输入的 String。
+如果随机起点太大，Dot Com 的位置可能超出 0-6。
 
-它会把 String 转成 int。
+例子：
 
-然后检查：
+start = 5
+locations = 5, 6, 7
 
-如果输入不在 0-6，返回 invalid
-如果位置已经被 hit 过，返回 repeat
-如果猜中一个新位置，返回 hit
-如果全部位置都被 hit，返回 kill
-如果没猜中，返回 miss
-Game Driver 流程
-创建 SimpleDotCom object。
-生成 0 到 4 的随机起点。
-位置设置为 start、start + 1、start + 2。
-创建 GameHelper。
-开始 while 循环。
-让用户输入数字。
-把输入传给 checkYourself()。
-打印结果。
-猜测次数加 1。
-如果结果是 kill，结束循环。
-打印用户一共猜了多少次。
-Pseudocode
-Create SimpleDotCom object.
-Generate random start from 0 to 4.
-Create location array with start, start + 1, start + 2.
-Set the location into the Dot Com object.
-Create a helper to get user input.
-Set gameAlive to true.
-While gameAlive is true:
-    Ask user to enter a number.
-    Send the guess to checkYourself().
-    Print the result.
-    Add 1 to number of guesses.
-    If result is kill:
-        Set gameAlive to false.
-Print final guess count.
-测试计划
+但是游戏范围应该只有 0-6。
 
-先测试核心 class，再写完整游戏。
+原因
 
-固定位置：
+随机范围没有算清楚。
 
-{2, 3, 4}
+修正方法
 
-测试内容：
+起点必须是 0 到 4。
 
-猜 1，应该返回 miss
-猜 2，应该返回 hit
-猜 3，应该返回 hit
-猜 4，应该返回 kill
-连续猜 2，第二次应该返回 repeat
-猜 -1，应该返回 invalid
-猜 9，应该返回 invalid
-输入 abc，应该返回 invalid
+int randomStart = (int) (Math.random() * 5);
 
-还要测试随机起点 20 次，确保每次都在 0 到 4。
+这样最大情况是：
+
+start = 4
+locations = 4, 5, 6
+
+不会越界。
+
+下次如何避免
+
+写随机数时，要专门测试边界。
+
+所以我写了 RandomRangeDemo.java。
+
+Bug 3: 方法里重新赋值 reference 容易误解
+问题
+
+我一开始以为方法里写：
+
+d = new Dog();
+
+可能会让外面的 dog 也指向新的 Dog object。
+
+原因
+
+我没有完全理解 Java 是 pass-by-value。
+
+Java 传进去的是 reference 的 copy。
+
+修正方法
+
+我写了 PassByValueReassignmentDemo.java。
+
+结果说明：
+
+修改 object 的 state，外面能看到变化
+重新给参数赋值，不会替换外面的 reference
+下次如何避免
+
+学习 reference 时，要分清两件事：
+
+修改 object 本身
+改变局部变量指向哪个 object
