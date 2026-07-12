@@ -1,7 +1,7 @@
 
 ## output.md
 
-````md
+
 # Day 6 Output
 
 ## SimpleDotComTestDrive.java
