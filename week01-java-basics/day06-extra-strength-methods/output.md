@@ -6,7 +6,6 @@
 
 ## SimpleDotComTestDrive.java
 
-```text
 PASS: miss test
 PASS: first hit test
 PASS: second hit test
@@ -15,6 +14,7 @@ PASS: repeated guess test
 PASS: out of range -1 test
 PASS: out of range 9 test
 PASS: non-number test
+
 RandomRangeDemo.java
 Random start: 2 PASS
 Random start: 0 PASS
@@ -38,6 +38,7 @@ Random start: 4 PASS
 Random start: 3 PASS
 Final result: PASS
 PassByValueReassignmentDemo.java
+
 Before changeDogName:
 dog name = Original Dog
 Inside changeDogName:
@@ -59,6 +60,7 @@ changeDogName() 修改的是同一个 object 的 state，所以外面可以看�
 replaceDog() 只是改变方法里局部 reference 的指向，不会替换外面的 dog reference。
 
 SimpleDotComGame.java - Session 1
+
 Enter a number: 0
 miss
 Enter a number: 1
@@ -68,7 +70,9 @@ hit
 Enter a number: 3
 kill
 You took 4 guesses
+
 SimpleDotComGame.java - Session 2
+
 Enter a number: 2
 hit
 Enter a number: 2
