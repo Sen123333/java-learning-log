@@ -6,6 +6,7 @@
 
 ## SimpleDotComTestDrive.java
 
+```text
 PASS: miss test
 PASS: first hit test
 PASS: second hit test
