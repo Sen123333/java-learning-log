@@ -4,9 +4,9 @@
 
 # Day 6 Output
 
-## SimpleDotComTestDrive.java
-
 ```text
+SimpleDotComTestDrive.java
+
 PASS: miss test
 PASS: first hit test
 PASS: second hit test
