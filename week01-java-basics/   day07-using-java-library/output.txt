@@ -1,6 +1,6 @@
 ## output.txt
 
-```text
+
 Day 7 Output
 
 ArrayListApiPractice.java
