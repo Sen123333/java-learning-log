@@ -1,1 +1,36 @@
+## output.txt
 
+```text
+Day 7 Output
+
+ArrayListApiPractice.java
+
+PASS: add first item
+PASS: add second item
+PASS: get index 0
+PASS: set index 1
+PASS: contains Apple
+PASS: contains Orange
+PASS: indexOf Apple
+PASS: remove Apple
+PASS: size after remove
+PASS: remove missing item
+PASS: clear all items
+PASS: isEmpty
+Summary: 12 passed, 0 failed
+
+ArrayListDotComTestDrive.java
+
+PASS: miss test
+PASS: first hit test
+PASS: second hit test
+PASS: kill test
+PASS: repeated guess becomes miss
+PASS: trim input test
+PASS: empty input test
+PASS: non-number test
+PASS: negative input test
+PASS: out of range test
+PASS: defensive copy test
+PASS: reset location test
+Summary: 12 passed, 0 failed
