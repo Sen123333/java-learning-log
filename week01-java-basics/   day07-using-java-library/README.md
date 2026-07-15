@@ -79,3 +79,15 @@ ArrayList 比固定 array 更灵活。
 ArrayList 可以直接使用 remove() 删除元素，也可以用 contains() 和 indexOf() 检查元素。
 
 但是使用 ArrayList 时，也要注意 defensive copy，避免外部 list 修改内部 state。
+
+# Day 7 今日总结
+
+今天我学习了 Java 的 ArrayList 和 Java API 的基本使用。
+
+我练习了 ArrayList 的常用方法，包括 add()、get()、set()、remove()、contains()、indexOf()、size() 和 isEmpty()。
+
+我把 Day 6 的 Simple Dot Com 改成了 ArrayList 版本，这样命中一个位置后，可以直接把这个位置从列表里删除。
+
+我也学到了 defensive copy 的重要性，因为不能让外部代码随便修改对象内部的 state。
+
+今天最大的收获是：使用 Java API 不是偷懒，而是真正 Java 编程的一部分；会查 API、会测试 API，比死记方法更重要。
