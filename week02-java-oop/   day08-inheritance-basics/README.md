@@ -122,3 +122,11 @@ Bird IS-A Animal，所以 Bird extends Animal 合理。
 Dog IS-A Tail 不合理，所以 Dog 不应该 extends Tail。
 
 如果两个类只是有相同代码，但没有真正的 IS-A 关系，就不应该随便使用 inheritance。
+
+# Day 8 今日总结
+
+今天我学习了 Java 继承的基础，重点是 IS-A、extends、superclass、subclass 和 override。我知道了继承不是为了少写代码，而是要先判断两个 class 之间有没有真正的 IS-A 关系。例如 Dog IS-A Animal，所以 Dog extends Animal 是合理的；但是 Dog IS-A Tail 不成立，所以不能为了复用代码随便继承。
+
+我也学习了 override 和 overload 的区别。Override 是子类用相同方法签名重写父类方法，而 overload 是方法名相同但参数不同。我还知道了父类的 private field 仍然属于对象的一部分，但是子类不能直接访问，应该通过 constructor 或 getter 使用。
+
+今天最大的收获是：inheritance 适合表达“是什么”的关系，而 composition 适合表达“有什么”的关系。如果只是两个类有重复代码，不一定应该用继承。写程序前应该先判断设计是否合理，而不是只看代码能不能跑。
