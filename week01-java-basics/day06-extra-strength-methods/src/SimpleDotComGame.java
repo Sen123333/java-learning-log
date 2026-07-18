@@ -13,9 +13,14 @@ public class SimpleDotComGame {
         boolean isAlive = true;
 
         while (isAlive) {
-            String guess = helper.getUserInput("Enter a number: ");
-            String result = dot.checkYourself(guess);
+            String guess = helper.getUserInput("Enter a number, or q to quit: ");
 
+            if (guess.equals("quit")) {
+                System.out.println("Game ended by user.");
+                break;
+            }
+
+            String result = dot.checkYourself(guess);
             numOfGuesses++;
 
             System.out.println(result);
