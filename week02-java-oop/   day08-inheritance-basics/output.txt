@@ -1,1 +1,18 @@
+Day 8 Output
 
+PASS: dog name from superclass constructor
+PASS: dog age from superclass constructor
+PASS: cat name from superclass constructor
+PASS: bird name from superclass constructor
+PASS: dog inherited move
+PASS: cat inherited move
+PASS: dog override makeSound
+PASS: cat override makeSound
+PASS: bird override makeSound
+PASS: bird override move
+PASS: dog unique fetch
+PASS: cat unique scratch
+PASS: bird unique fly
+PASS: dog breed getter
+PASS: bird canFly getter
+Summary: 15 passed, 0 failed
