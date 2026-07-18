@@ -1,9 +1,13 @@
 import java.util.ArrayList;
 
 public class ArrayListDotCom {
-    private ArrayList<Integer> locationCells;
+    private ArrayList<Integer> locationCells = new ArrayList<Integer>();
 
     public void setLocationCells(ArrayList<Integer> locations) {
+        if (locations == null) {
+            throw new IllegalArgumentException("locations cannot be null");
+        }
+
         locationCells = new ArrayList<Integer>(locations);
     }
 
