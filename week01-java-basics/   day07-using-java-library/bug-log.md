@@ -1,81 +1,82 @@
-# Day 7 Bug Log
+# Day 7 Fix Bug Log
 
-## Bug 1: remove(index) 和 remove(object) 混淆
+## Bug 1: ArrayListDotCom 未初始化时可能崩溃
 
 ### 问题
 
-在 `ArrayList<Integer>` 里，如果写：
+如果没有先调用 `setLocationCells()`，就调用：
 
 ```java
-locations.remove(2);
+dot.checkYourself("2");
 
-Java 可能理解成删除 index 2 的元素，而不是删除数字 2。
-
-原因
-
-ArrayList 有两个 remove 方法：
-
-remove(int index)
-remove(Object object)
-
-Integer 容易和 int index 混淆。
-
-修正
-
-使用：
-
-locations.remove(Integer.valueOf(guess));
-
-这样 Java 会删除数字对象，而不是 index。
-
-下次注意
-
-在 ArrayList<Integer> 里删除某个数字时，用 Integer.valueOf() 更安全。
-
-Bug 2: setLocationCells() 没有 defensive copy
-问题
-
-如果直接写：
-
-locationCells = locations;
-
-外部代码之后还能修改这个 list。
-
-这样会破坏 Dot Com 的内部 state。
-
-修正
-
-使用 defensive copy：
-
-locationCells = new ArrayList<Integer>(locations);
-
-这样外部 list 再修改，也不会影响 Dot Com 内部位置。
-
-Bug 3: 带空格数字被判断成 invalid
-问题
-
-用户输入：
-
-" 2 "
-
-一开始可能被 parse 失败。
+旧版本可能会出现 NullPointerException。
 
 原因
 
-没有先使用 trim() 去掉前后空格。
+locationCells 一开始是 null。
 
-修正
-String cleanGuess = stringGuess.trim();
-int guess = Integer.parseInt(cleanGuess);
-Bug 4: reset locations 后旧状态没有清空
+修复
+
+我把它初始化成空 ArrayList：
+
+private ArrayList<Integer> locationCells = new ArrayList<Integer>();
+结果
+
+现在没有设置位置时，猜测会返回 miss，不会崩溃。
+
+Bug 2: setLocationCells(null) 没有明确处理
 问题
 
-如果重新调用 setLocationCells()，旧的 hit 状态可能还留着。
+旧版本中，如果传入 null：
 
-修正
+dot.setLocationCells(null);
 
-ArrayList 版本里，每次 setLocationCells() 都创建新的 list。
+程序会因为 new ArrayList<Integer>(locations) 崩溃。
 
-locationCells = new ArrayList<Integer>(locations);
+原因
 
-这样旧状态会被清掉。
+没有检查 locations 是否为 null。
+
+修复
+
+我加了明确判断：
+
+if (locations == null) {
+    throw new IllegalArgumentException("locations cannot be null");
+}
+结果
+
+现在错误更清楚，也有自动测试检查。
+
+Bug 3: kill 后再次猜同一个位置
+问题
+
+Dot Com 被 kill 后，如果再次猜同一个数字，旧版本没有专门测试。
+
+修复
+
+我增加了 after-kill 测试：
+
+assertEquals("guess after kill test", "miss", dot.checkYourself("4"));
+结果
+
+因为位置已经被删除，所以再次猜 4 返回 miss。
+
+Bug 4: Day 6 GameHelper 处理 EOF 会崩溃
+问题
+
+旧版 GameHelper 直接调用：
+
+inputLine.length()
+
+如果 readLine() 返回 null，就会出现 NullPointerException。
+
+修复
+
+先检查 null：
+
+if (inputLine == null) {
+    return "quit";
+}
+
+并支持 q 和 quit 退出游戏。
