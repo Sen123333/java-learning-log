@@ -16,18 +16,28 @@ public class ArrayListDotComTestDrive {
         }
     }
 
-    public static void main(String[] args) {
-        testMissHitKill();
-        testRepeatedGuess();
-        testInvalidInputs();
-        testTrimInput();
-        testDefensiveCopy();
-        testResetLocations();
+    public static void assertIntEquals(String testName, int expected, int actual) {
+        if (expected == actual) {
+            System.out.println("PASS: " + testName);
+            passed++;
+        } else {
+            System.out.println("FAIL: " + testName
+                    + " expected=" + expected
+                    + " actual=" + actual);
+            failed++;
+        }
+    }
 
-        System.out.println("Summary: " + passed + " passed, " + failed + " failed");
+    public static void assertThrows(String testName) {
+        ArrayListDotCom dot = new ArrayListDotCom();
 
-        if (failed > 0) {
-            System.exit(1);
+        try {
+            dot.setLocationCells(null);
+            System.out.println("FAIL: " + testName + " expected exception");
+            failed++;
+        } catch (IllegalArgumentException ex) {
+            System.out.println("PASS: " + testName);
+            passed++;
         }
     }
 
@@ -37,6 +47,24 @@ public class ArrayListDotComTestDrive {
         locations.add(b);
         locations.add(c);
         return locations;
+    }
+
+    public static void main(String[] args) {
+        testMissHitKill();
+        testRepeatedGuess();
+        testInvalidInputs();
+        testTrimInput();
+        testDefensiveCopy();
+        testResetLocations();
+        testUninitializedState();
+        testNullLocations();
+        testAfterKill();
+
+        System.out.println("Summary: " + passed + " passed, " + failed + " failed");
+
+        if (failed > 0) {
+            System.exit(1);
+        }
     }
 
     public static void testMissHitKill() {
@@ -61,6 +89,7 @@ public class ArrayListDotComTestDrive {
         ArrayListDotCom dot = new ArrayListDotCom();
         dot.setLocationCells(makeLocations(2, 3, 4));
 
+        assertEquals("null input test", "invalid", dot.checkYourself(null));
         assertEquals("empty input test", "invalid", dot.checkYourself(""));
         assertEquals("non-number test", "invalid", dot.checkYourself("abc"));
         assertEquals("negative input test", "invalid", dot.checkYourself("-1"));
@@ -94,5 +123,26 @@ public class ArrayListDotComTestDrive {
         dot.setLocationCells(makeLocations(0, 1, 2));
 
         assertEquals("reset location test", "hit", dot.checkYourself("0"));
+    }
+
+    public static void testUninitializedState() {
+        ArrayListDotCom dot = new ArrayListDotCom();
+
+        assertEquals("uninitialized checkYourself test", "miss", dot.checkYourself("2"));
+        assertIntEquals("uninitialized remaining count test", 0, dot.getRemainingCellsCount());
+    }
+
+    public static void testNullLocations() {
+        assertThrows("null locations test");
+    }
+
+    public static void testAfterKill() {
+        ArrayListDotCom dot = new ArrayListDotCom();
+        dot.setLocationCells(makeLocations(2, 3, 4));
+
+        dot.checkYourself("2");
+        dot.checkYourself("3");
+        assertEquals("kill test before after-kill test", "kill", dot.checkYourself("4"));
+        assertEquals("guess after kill test", "miss", dot.checkYourself("4"));
     }
 }
