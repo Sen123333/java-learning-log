@@ -7,7 +7,6 @@
 
 Book: Head First Java, 2nd Edition  
 Chapter: Chapter 7 - Better Living in Objectville  
-Printed pages: 177-192  
 Reading time: about 90 minutes
 
 重点内容：
